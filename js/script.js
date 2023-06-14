@@ -2,6 +2,7 @@
 let canvas = document.getElementById("gamesnake");
 let context = canvas.getContext("2d");
 let box = 32;
+let pontos = 0;
 
 // kobrinha
 let snake = [];
@@ -68,9 +69,11 @@ function iniciarJogo() {
     }
 
     for (i = 1; i < snake.length; i++) {
+        document.getElementById("pnts").innerText = pontos + " pontos"
         if (snake[0].x == snake[i].x && snake[0].y == snake[i].y){
             clearInterval(jogo);
             alert('Game Over >:O')
+            document.getElementById("pnts").innerText = "Após " + pontos + " pontos você perdeu"
         }
     }
 
@@ -92,6 +95,7 @@ function iniciarJogo() {
     } else {
         food.x = Math.floor(Math.random() * 15 +1) * box;
         food.y = Math.floor(Math.random() * 15 +1) * box;
+        pontos += 1
     }
 
     let newHead ={
